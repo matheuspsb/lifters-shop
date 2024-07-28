@@ -32,4 +32,4 @@ const Navbar: React.FC<NavbarProps> = ({ totalItems }) => {
   );
 };
 
-export default Navbar;
+export { Navbar };
