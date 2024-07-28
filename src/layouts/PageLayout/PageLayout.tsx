@@ -1,12 +1,16 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../Navbar";
+import "./PageLayout.css";
 
 const PageLayout = () => {
   return (
-    <main className="ly-private-layout__container--routes">
+    <React.Fragment>
       <Navbar totalItems={3} />
-      <Outlet />
-    </main>
+      <main className="page-layout">
+        <Outlet />
+      </main>
+    </React.Fragment>
   );
 };
 
