@@ -5,7 +5,10 @@ import "./FilterBar.css";
 const FilterBar: React.FC = () => {
   return (
     <div className="filter-bar">
-      <h5>Filters</h5>
+      <div className="filter-bar-header">
+        <h5>Filters</h5>
+        <button>Clear filters</button>
+      </div>
       <div className="filter-bar-categories">
         <span>Categories</span>
         {categories.map((category) => (

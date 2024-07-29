@@ -17,6 +17,6 @@ export const colors = [
   { name: 'navy', hex: '#000080' },
   { name: 'black', hex: '#555' },
   { name: 'pink', hex: '#FFC0CB' },
-  { name: 'white', hex: '#FFFFFF' },
+  { name: 'white', hex: '#F5F5F5' },
   { name: 'darkGreen', hex: '#6FCF97' }
 ];
