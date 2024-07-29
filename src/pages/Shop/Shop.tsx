@@ -1,8 +1,14 @@
-import { InfoBanner } from "../../components";
+import { FilterBar, InfoBanner } from "../../components";
+import "./Shop.css";
 
 const Shop = () => {
   return (
-    <InfoBanner />
+    <div className="shop-container">
+      <InfoBanner />
+      <div className="shop-content">
+        <FilterBar />
+      </div>   
+    </div>
   );
 }
 
