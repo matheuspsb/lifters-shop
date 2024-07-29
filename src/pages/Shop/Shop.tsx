@@ -1,5 +1,9 @@
+import { InfoBanner } from "../../components";
+
 const Shop = () => {
-  return <div>Shop</div>;
+  return (
+    <InfoBanner />
+  );
 }
 
 export default Shop;

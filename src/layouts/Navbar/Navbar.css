@@ -45,6 +45,7 @@
 
 .nav-item:hover {
   text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 .navbar-right {
@@ -69,4 +70,5 @@
 
 .login-text:hover {
   text-decoration: underline;
+  text-underline-offset: 6px;
 }
