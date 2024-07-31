@@ -56,5 +56,5 @@ yarn run dev
 - ### Passagem de Dados via Navegação:
   Optei por passar os dados via navegação em vez de fazer uma chamada adicional ao servidor para buscar produtos pelo ID. Dado que não existe um endpoint para obter o produto pelo ID, essa abordagem simplifica o fluxo de dados e melhora o desempenho da aplicação, evitando requisições desnecessárias.
 
--###: Uso do useContext:
+-### Uso do useContext:
   O useContext foi utilizado para compartilhar estados e funções globais entre componentes sem a necessidade de passar props manualmente por vários níveis da árvore de componentes. Isso simplifica a estrutura do código e melhora a organização e manutenção da aplicação.
