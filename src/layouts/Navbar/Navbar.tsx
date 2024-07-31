@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
+import { CartMenu } from "../../components";
 import { Bag, MagnifyingGlass } from "@phosphor-icons/react";
 import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { state } = useCart();
+  const [isCartVisible, setIsCartVisible] = useState(false);
 
   return (
     <nav className="navbar">
@@ -25,11 +28,23 @@ const Navbar = () => {
       </div>
       <div className="navbar-right">
         <div className="cart-info">
-          <Bag size={24} />
-          <span className="cart-count">{state.cart.length}</span>
+          <div
+            onClick={() => setIsCartVisible(true)}
+            className="cart-info-icon"
+          >
+            <Bag size={24} />
+            <span className="cart-count">{state.cart.length}</span>
+          </div>
           <span className="login-text">Login</span>
         </div>
       </div>
+      {isCartVisible && (
+        <div className="cart-overlay" onClick={() => setIsCartVisible(false)}>
+          <div className="cart-content" onClick={(e) => e.stopPropagation()}>
+            <CartMenu cart={state.cart} />
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

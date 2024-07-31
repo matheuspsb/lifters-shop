@@ -8,7 +8,7 @@ import { useCart } from "../../contexts/CartContext";
 const ProductsDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
   const product = location.state?.product as ProductProps;
 
   if (!product) {
@@ -20,9 +20,17 @@ const ProductsDetails = () => {
   }
 
   const addToCart = () => {
+    const image =
+      product.fotos.find((foto) => foto.capa)?.url || product.fotos[0].url;
+
     dispatch({
-      type: 'ADD_TO_CART',
-      payload: { name: product.titulo, price: product.valor }
+      type: "ADD_TO_CART",
+      payload: {
+        id: state.cart.length + 1,
+        name: product.titulo,
+        price: product.valor,
+        image: image,
+      },
     });
     alert("Produto adicionado ao carrinho!");
   };
@@ -68,7 +76,7 @@ const ProductsDetails = () => {
           <div className="product-footer-actions">
             <CustomButton
               title="Add to bag"
-              icon={<Bag size={24}/>}
+              icon={<Bag size={24} />}
               titleColor="#ffffff"
               iconColor="#ffffff"
               backgroundColor="#000000"

@@ -1,12 +1,13 @@
 import React, { createContext, useReducer, useContext, ReactNode } from "react";
 
 interface CartItem {
+  id: number;
   name: string;
   price: string;
   image: string;
 }
 
-interface CartState {
+export interface CartState {
   cart: CartItem[];
 }
 
@@ -34,7 +35,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter((item) => item.name !== action.payload.name),
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
     default:
       return state;
