@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { PageLayout } from "../layouts";
-import { ProductsDetails, Shop } from "../pages";
+import { ProductDetails, Shop } from "../pages";
 
 export const routes = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/produto/:productId",
-        element: <ProductsDetails />
+        element: <ProductDetails />
       }
     ],
   },

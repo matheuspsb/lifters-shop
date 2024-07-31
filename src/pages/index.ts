@@ -1,2 +1,2 @@
 export { default as Shop } from "./Shop";
-export { default as ProductsDetails } from "./ProductsDetails";
+export { default as ProductDetails } from "./ProductDetails";
