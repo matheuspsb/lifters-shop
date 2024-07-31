@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { CartState } from "../../contexts/CartContext";
+import { CartState, useCart } from "../../contexts/CartContext";
 import { CartItem } from "../CartItem";
 import { CustomButton } from "../CustomButton";
 import "./Cart.css";
@@ -11,18 +11,10 @@ interface ICart {
 
 const Cart: React.FC<ICart> = ({ cart }) => {
   const navigate = useNavigate();
+  const { getTotalPrice } = useCart();
 
   const navigateToPayment = () => {
     navigate("/payment");
-  };
-
-  const getTotal = () => {
-    return cart
-      .reduce((total, item) => {
-        const price = parseFloat(item.price.replace("$", ""));
-        return total + price;
-      }, 0)
-      .toFixed(2);
   };
 
   return (
@@ -45,7 +37,7 @@ const Cart: React.FC<ICart> = ({ cart }) => {
         <>
           <div className="cart-total">
             <span>Total:</span>
-            <span>${getTotal()}</span>
+            <span>${getTotalPrice()}</span>
           </div>
 
           <CustomButton

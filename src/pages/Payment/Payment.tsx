@@ -9,7 +9,7 @@ import { CartVisibility } from "../../types";
 const Payment = () => {
   const navigate = useNavigate();
   const { hideCart } = useOutletContext<CartVisibility>();
-  const { state } = useCart();
+  const { state, getTotalPrice } = useCart();
 
   useEffect(() => {
     hideCart();
@@ -45,7 +45,7 @@ const Payment = () => {
           <div className="payment-body-form">
             <div className="payment-body-form-total">
               <span>Total:</span>
-              <span></span>
+              <span>{getTotalPrice()}</span>
             </div>
           </div>
         </div>
