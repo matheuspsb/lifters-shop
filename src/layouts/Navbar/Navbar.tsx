@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
 import { CartMenu } from "../../components";
 import { Bag, MagnifyingGlass } from "@phosphor-icons/react";
@@ -10,8 +10,13 @@ interface NavbarProps {
   hideCart: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isCartVisible, showCart, hideCart }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  isCartVisible,
+  showCart,
+  hideCart,
+}) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { state } = useCart();
 
   return (
@@ -39,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ isCartVisible, showCart, hideCart }) =>
           <span className="login-text">Login</span>
         </div>
       </div>
-      {isCartVisible && (
+      {isCartVisible && location.pathname !== "/payment" && (
         <div className="cart-overlay" onClick={hideCart}>
           <div className="cart-content" onClick={(e) => e.stopPropagation()}>
             <CartMenu cart={state.cart} />
