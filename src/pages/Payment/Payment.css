@@ -1,0 +1,40 @@
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 70px); /* 70px = navbar height */
+  padding: 0 10%;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.payment-header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.payment-header-title h6 {
+  font-size: 32px;
+  font-weight: 500;
+  color: #000;
+}
+
+.payment-body {
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+}
+
+.payment-body-cart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+}
