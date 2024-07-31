@@ -1,0 +1,25 @@
+.product-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 5rem;
+  padding: 0 1rem;
+
+  @media screen and (max-width: 1280px) {
+    padding-left: 4rem;
+  }
+}
+
+.product-grid span {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #000;
+  margin-bottom: 1.5rem;
+  align-self: self-end;
+}
+
+.product-grid-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+}
