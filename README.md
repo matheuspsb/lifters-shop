@@ -44,11 +44,11 @@ yarn run dev
 
 ## Comentários sobre o Projeto
 
-- ### Escolha do Layout:
-  Optei por criar um layout simples e agradável, ideal para organização do dia a dia sem difículdades ou sistemas complexos.
+- ### Utilização do TypeScript:
+  Decidi utilizar TypeScript para proporcionar uma experiência de desenvolvimento mais robusta e segura. A tipagem estática oferecida pelo TypeScript ajuda a detectar erros durante o desenvolvimento, melhorar a autocompletação e documentação do código, e garantir que a aplicação se mantenha consistente e livre de erros comuns. Essa escolha contribui para uma base de código mais confiável e de fácil manutenção.
 
-- ### Utilização do JavaScript:
-  Decidi utilizar JavaScript puro neste projeto para aproveitar os benefícios de uma linguagem amplamente suportada e flexível, proporcionando maior compatibilidade e facilidade na manipulação direta do DOM durante o desenvolvimento.
+- ### Utilização do react-router-dom:
+  Escolhi o react-router-dom para gerenciar o roteamento da aplicação devido à sua flexibilidade e praticidade. Ele facilita a implementação de navegação entre diferentes páginas e componentes, permitindo a criação de uma experiência de usuário fluida e intuitiva. Com o react-router-dom, conseguimos gerenciar rotas, parâmetros e navegação programática de forma eficiente, melhorando a organização e escalabilidade da aplicação.
 
 - ### Utilização do React Query:
   Para otimizar a gestão de estado e a manipulação de dados assíncronos, escolhi utilizar o React Query. Essa biblioteca facilita o gerenciamento de caches, o refetching de dados e a sincronização com o servidor, resultando em um desenvolvimento mais eficiente e uma aplicação mais responsiva.
