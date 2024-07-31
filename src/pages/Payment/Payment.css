@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .payment-header-title {
@@ -24,6 +25,7 @@
   font-size: 32px;
   font-weight: 500;
   color: #000;
+  margin: 0;
 }
 
 .payment-body {
@@ -42,7 +44,48 @@
 .payment-body-form {
   display: flex;
   flex-direction: column;
+  max-width: 408px;
   width: 100%;
   gap: 2rem;
   background-color: #000;
+  padding: 16px;
+}
+
+.payment-body-form-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #555;
+}
+
+.payment-body-form-total span:nth-child(1) {
+  font-size: 22px;
+}
+
+.payment-body-form-total span:nth-child(2) {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.payment-body-form-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.payment-body-form-select {
+  display: flex;
+  gap: 2rem;
+}
+
+.payment-body-form-terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-body-form-terms input[type="radio" i] {
+  width: 16px;
+  height: 16px;	
 }

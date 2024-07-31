@@ -1,0 +1,42 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 16px 12px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.input-field.error {
+  border-color: red;
+}
+
+.input-field.error::placeholder {
+  color: red;
+}
+
+.input-logo {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px; 
+  height: auto;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}

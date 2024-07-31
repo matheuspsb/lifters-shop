@@ -1,10 +1,38 @@
+import { useEffect } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Bag } from "@phosphor-icons/react";
 import { useCart } from "../../contexts/CartContext";
-import { CustomButton, ProductCard } from "../../components";
-import "./Payment.css";
-import { useEffect } from "react";
+import {
+  CustomButton,
+  CustomInput,
+  CustomSelect,
+  ProductCard,
+} from "../../components";
 import { CartVisibility } from "../../types";
+import {
+  formatCardNumber,
+  formatCVV,
+  validateCardholderName,
+  validateCardNumber,
+  validateCVV,
+} from "../../utils/utils";
+import cardLogo from "../../assets/elo-logo.png";
+import "./Payment.css";
+
+const expiryMonth = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
+];
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -41,13 +69,62 @@ const Payment = () => {
               image={product.image}
             />
           ))}
-
-          <div className="payment-body-form">
-            <div className="payment-body-form-total">
-              <span>Total:</span>
-              <span>{getTotalPrice()}</span>
-            </div>
+        </div>
+        <div className="payment-body-form">
+          <div className="payment-body-form-total">
+            <span>Total:</span>
+            <span>${getTotalPrice()}</span>
           </div>
+          <div className="payment-body-form-info">
+            <CustomInput
+              label="Card number"
+              placeholder="0000 0000 0000 0000"
+              htmlFor="card-number"
+              maxLength={19}
+              icon={cardLogo}
+              validate={validateCardNumber}
+              format={formatCardNumber}
+            />
+            <CustomInput
+              label="Cardholder Name"
+              placeholder="RAM"
+              htmlFor="holder-name"
+              validate={validateCardholderName}
+            />
+            <div className="payment-body-form-select">
+              <CustomSelect
+                label="Expiry Month"
+                htmlFor="expiry-month"
+                options={expiryMonth}
+              />
+              <CustomSelect
+                label="Expiry Month"
+                htmlFor="expiry-month"
+                options={expiryMonth}
+              />
+            </div>
+            <CustomInput
+              label="CVV"
+              placeholder="-"
+              htmlFor="cvv"
+              format={formatCVV}
+              validate={validateCVV}
+              maxLength={4}
+            />
+
+            <div className="payment-body-form-terms">
+              <input type="radio"  />
+              <label>Aceitar todos os termos</label>
+            </div>
+            
+          </div>
+
+          <CustomButton
+            backgroundColor="#fff"
+            title="Checkout"
+            titleColor="#000"
+            onClick={() => navigate("/success")}
+          />
         </div>
       </div>
     </div>
