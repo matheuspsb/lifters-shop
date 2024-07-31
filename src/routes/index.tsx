@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { PageLayout } from "../layouts";
-import { Payment, ProductDetails, Shop } from "../pages";
+import { Payment, ProductDetails, Shop, Sucess } from "../pages";
 
 export const routes = createBrowserRouter([
   {
@@ -13,11 +13,15 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/produto/:productId",
-        element: <ProductDetails />
+        element: <ProductDetails />,
       },
       {
         path: "/payment",
-        element: <Payment />
+        element: <Payment />,
+      },
+      {
+        path: "/success",
+        element: <Sucess />,
       },
     ],
   },
