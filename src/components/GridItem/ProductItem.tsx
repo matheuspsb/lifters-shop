@@ -15,7 +15,7 @@ const ProductItem = ({ product }: IProductItem) => {
 
   const handleClick = () => {
     const routeTitle = product.titulo.replace(/\s+/g, "-").toLowerCase();
-    navigate(`/produto/${routeTitle}`);
+    navigate(`/produto/${routeTitle}`, { state: { product } });
   };
 
   return (
