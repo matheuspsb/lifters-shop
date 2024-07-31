@@ -7,6 +7,7 @@ interface CustomButtonProps {
   titleColor?: string;
   iconColor?: string;
   backgroundColor?: string;
+  width?: string;
   onClick?: () => void;
 }
 
@@ -16,13 +17,14 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   titleColor = '#ffffff',
   iconColor = '#ffffff',
   backgroundColor = '#000000',
+  width,
   onClick,
 }) => {
   return (
     <button
       className="custom-button"
       onClick={onClick}
-      style={{ backgroundColor }}
+      style={{ backgroundColor, width }}
     >
       {icon && <span className="icon" style={{ color: iconColor }}>{icon}</span>}
       {title && <span className="title" style={{ color: titleColor }}>{title}</span>}
