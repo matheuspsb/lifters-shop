@@ -17,3 +17,9 @@ export type ProductProps = {
   tamanhos: string[];
   fotos: PictureProps[];
 }
+
+export interface CartVisibility {
+  isCartVisible: boolean;
+  showCart: () => void;
+  hideCart: () => void;
+}

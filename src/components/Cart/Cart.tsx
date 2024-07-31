@@ -1,9 +1,9 @@
 import React from "react";
-import { CartItem } from "../CartItem";
-import { CartState } from "../../contexts/CartContext";
-import "./Cart.css";
-import { CustomButton } from "../CustomButton";
 import { useNavigate } from "react-router-dom";
+import { CartState } from "../../contexts/CartContext";
+import { CartItem } from "../CartItem";
+import { CustomButton } from "../CustomButton";
+import "./Cart.css";
 
 interface ICart {
   cart: CartState["cart"];
@@ -14,7 +14,7 @@ const Cart: React.FC<ICart> = ({ cart }) => {
 
   const navigateToPayment = () => {
     navigate("/payment");
-  }
+  };
 
   const getTotal = () => {
     return cart

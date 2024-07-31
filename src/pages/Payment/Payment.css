@@ -38,3 +38,11 @@
   width: 100%;
   gap: 2rem;
 }
+
+.payment-body-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+  background-color: #000;
+}
