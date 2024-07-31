@@ -12,10 +12,10 @@ interface ICart {
 const Cart: React.FC<ICart> = ({ cart }) => {
   const navigate = useNavigate();
 
-  const navigateToCheckout = () => {
-    navigate("/checkout");
+  const navigateToPayment = () => {
+    navigate("/payment");
   }
-  
+
   const getTotal = () => {
     return cart
       .reduce((total, item) => {
@@ -52,7 +52,7 @@ const Cart: React.FC<ICart> = ({ cart }) => {
             title="Checkout"
             backgroundColor="#fff"
             titleColor="#000"
-            onClick={navigateToCheckout}
+            onClick={navigateToPayment}
           />
         </>
       )}
