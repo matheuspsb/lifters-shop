@@ -1,12 +1,18 @@
 import React, { createContext, useReducer, useContext, ReactNode } from "react";
-import { ProductProps } from "../types";
+
+interface CartItem {
+  name: string;
+  price: string;
+}
 
 interface CartState {
-  cart: Array<Pick<ProductProps, "titulo" | "valor">>;
+  cart: CartItem[];
 }
 
 // Define o tipo das ações
-type CartAction = { type: "ADD_TO_CART"; payload: any };
+type CartAction =
+  | { type: "ADD_TO_CART"; payload: CartItem }
+  | { type: "REMOVE_FROM_CART"; payload: CartItem };
 
 interface CartContextType {
   state: CartState;
@@ -23,6 +29,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return {
         ...state,
         cart: [...state.cart, action.payload],
+      };
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.name !== action.payload.name),
       };
     default:
       return state;
@@ -42,7 +53,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   console.log(state);
-  
+
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

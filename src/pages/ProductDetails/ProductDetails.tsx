@@ -1,11 +1,14 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ProductProps } from "../../types";
 import "./ProductDetails.css";
 import { CustomButton } from "../../components";
 import { Bag } from "@phosphor-icons/react";
+import { useCart } from "../../contexts/CartContext";
 
 const ProductsDetails = () => {
+  const navigate = useNavigate();
   const location = useLocation();
+  const { dispatch } = useCart();
   const product = location.state?.product as ProductProps;
 
   if (!product) {
@@ -16,12 +19,20 @@ const ProductsDetails = () => {
     );
   }
 
+  const addToCart = () => {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: { name: product.titulo, price: product.valor }
+    });
+    alert("Produto adicionado ao carrinho!");
+  };
+
   return (
     <div className="product-details">
       <div className="product-details-container">
         <div className="product-image">
           {product.fotos.map((foto) => (
-            <img src={foto.url} alt={product.titulo} key={product.titulo} />
+            <img src={foto.url} alt={product.titulo} key={foto.url} />
           ))}
         </div>
 
@@ -61,13 +72,13 @@ const ProductsDetails = () => {
               titleColor="#ffffff"
               iconColor="#ffffff"
               backgroundColor="#000000"
-              onClick={() => alert("Button clicked")}
+              onClick={addToCart}
             />
             <CustomButton
               title="Back"
               titleColor="#000000"
               backgroundColor="#e0e0e0"
-              onClick={() => alert("Back button clicked")}
+              onClick={() => navigate(-1)}
             />
           </div>
         </div>
