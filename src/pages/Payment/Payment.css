@@ -85,7 +85,29 @@
   gap: 0.5rem;
 }
 
-.payment-body-form-terms input[type="radio" i] {
+.payment-body-form-terms input[type="radio"] {
+  display: none;
+}
+
+.payment-body-form-terms label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.payment-body-form-terms label::before {
+  content: '';
   width: 16px;
-  height: 16px;	
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  display: inline-block;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.payment-body-form-terms input[type="radio"]:checked + label::before {
+  background-color: #fff;
+  border-color: #fff;
 }

@@ -11,7 +11,6 @@ export interface CartState {
   cart: CartItem[];
 }
 
-// Define o tipo das ações
 type CartAction =
   | { type: "ADD_TO_CART"; payload: CartItem }
   | { type: "REMOVE_FROM_CART"; payload: CartItem };
@@ -64,8 +63,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       }, 0)
       .toFixed(2);
   };
-
-  console.log(state);
 
   return (
     <CartContext.Provider value={{ state, dispatch, getTotalPrice }}>

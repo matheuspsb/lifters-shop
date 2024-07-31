@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useError } from "../../contexts/ErrorContext";
 import "./CustomInput.css";
 
 interface ICustomInputProps {
   type?: string;
   label?: string;
   placeholder?: string;
-  htmlFor?: string;
+  htmlFor: string;
   icon?: string;
   errorMessage?: string;
   maxLength?: number;
@@ -18,21 +19,21 @@ const CustomInput: React.FC<ICustomInputProps> = ({
   label,
   placeholder,
   icon,
-  errorMessage,
   htmlFor,
   maxLength,
   validate,
   format,
 }) => {
+  const { errors, setErrors } = useError();
   const [value, setValue] = useState("");
-  const [error, setError] = useState<string | undefined>(errorMessage);
   const [isTouched, setIsTouched] = useState(false);
 
   useEffect(() => {
     if (validate && isTouched) {
-      setError(validate(value));
+      const error = validate(value);
+      setErrors((prevErrors) => ({ ...prevErrors, [htmlFor!]: error }));
     }
-  }, [value, validate, isTouched]);
+  }, [value, validate, isTouched, htmlFor, setErrors]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newValue = e.target.value;
@@ -50,7 +51,7 @@ const CustomInput: React.FC<ICustomInputProps> = ({
         <input
           id={htmlFor}
           type={type}
-          className={`input-field ${error ? "error" : ""}`}
+          className={`input-field ${errors[htmlFor!] ? "error" : ""}`}
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
@@ -58,20 +59,11 @@ const CustomInput: React.FC<ICustomInputProps> = ({
         />
         {icon && <img src={icon} alt="elo logo" className="input-logo" />}
       </div>
-      {error && isTouched && <div className="error-message">{error}</div>}
+      {errors[htmlFor] && isTouched && (
+        <div className="error-message">{errors[htmlFor]}</div>
+      )}
     </div>
   );
 };
 
 export { CustomInput };
-
-/* 
-<div className="input-group">
-              <label htmlFor="expiry-month">Expiry Month</label>
-              <input id="expiry-month" type="text" className="input-field" />
-            </div>
-            <div className="input-group">
-              <label htmlFor="expiry-year">Expiry Year</label>
-              <input id="expiry-year" type="text" className="input-field" />
-            </div>
-*/

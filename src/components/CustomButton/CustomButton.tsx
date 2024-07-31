@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import './CustomButton.css';
 
 interface CustomButtonProps {
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   title?: string;
   icon?: React.ReactNode;
   titleColor?: string;
@@ -12,6 +13,7 @@ interface CustomButtonProps {
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
+  type = 'button',
   title,
   icon,
   titleColor = '#ffffff',
@@ -22,6 +24,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 }) => {
   return (
     <button
+      type={type}
       className="custom-button"
       onClick={onClick}
       style={{ backgroundColor, width }}

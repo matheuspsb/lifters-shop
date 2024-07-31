@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Bag } from "@phosphor-icons/react";
-import { useCart } from "../../contexts/CartContext";
+import { useCart, useError } from "../../contexts";
 import {
   CustomButton,
   CustomInput,
@@ -38,10 +38,40 @@ const Payment = () => {
   const navigate = useNavigate();
   const { hideCart } = useOutletContext<CartVisibility>();
   const { state, getTotalPrice } = useCart();
+  const { errors } = useError();
+
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const radioRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     hideCart();
   }, [hideCart]);
+
+  const handleTermsChange = () => {
+    if (!termsAccepted) {
+      setTermsAccepted(true);
+      if (radioRef.current) {
+        radioRef.current.checked = true;
+      }
+    }
+  };
+
+  const handleCheckout = () => {
+    const hasErrors = Object.values(errors).some((error) => error !== undefined);
+    if (!state.cart.length) {
+      alert("Your cart is empty.");
+      return;
+    }
+    if (hasErrors) {
+      alert("Please fill in all fields correctly.");
+      return;
+    }
+    if (!termsAccepted) {
+      alert("You must accept the terms.");
+      return;
+    }
+    navigate("/success");
+  };
 
   return (
     <div className="payment">
@@ -98,9 +128,12 @@ const Payment = () => {
                 options={expiryMonth}
               />
               <CustomSelect
-                label="Expiry Month"
-                htmlFor="expiry-month"
-                options={expiryMonth}
+                label="Expiry Year"
+                htmlFor="expiry-year"
+                options={Array.from(
+                  { length: 10 },
+                  (_, i) => new Date().getFullYear() + i
+                ).map(String)}
               />
             </div>
             <CustomInput
@@ -113,17 +146,25 @@ const Payment = () => {
             />
 
             <div className="payment-body-form-terms">
-              <input type="radio"  />
-              <label>Aceitar todos os termos</label>
+              <input
+                type="radio"
+                id="terms"
+                ref={radioRef}
+                onChange={handleTermsChange}
+                checked={termsAccepted}
+              />
+              <label htmlFor="terms" onClick={handleTermsChange}>
+                Aceitar todos os termos
+              </label>
             </div>
-            
           </div>
 
           <CustomButton
             backgroundColor="#fff"
             title="Checkout"
             titleColor="#000"
-            onClick={() => navigate("/success")}
+            onClick={handleCheckout}
+            type="submit"
           />
         </div>
       </div>
