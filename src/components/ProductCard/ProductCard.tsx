@@ -10,10 +10,8 @@ interface IProductItem {
 }
 
 const ProductCard = ({ id, name, price, image }: IProductItem) => {
-
+  const { dispatch } = useCart();
   const removeFromCart = () => {
-    const { dispatch } = useCart();
-
     dispatch({ type: "REMOVE_FROM_CART", payload: { name, image, price, id } });
   };
 

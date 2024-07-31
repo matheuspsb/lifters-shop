@@ -5,7 +5,7 @@ import { Navbar } from "../Navbar";
 const PageLayout = () => {
   return (
     <React.Fragment>
-      <Navbar totalItems={3} />
+      <Navbar />
       <main className="page-layout">
         <Outlet />
       </main>
