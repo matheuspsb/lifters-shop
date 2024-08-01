@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { Bag } from "@phosphor-icons/react";
+import { Bag, Lock } from "@phosphor-icons/react";
 import { useCart } from "../../contexts";
 import { CustomButton, PaymentForm, ProductCard } from "../../components";
 import { CartVisibility } from "../../types";
@@ -47,6 +47,18 @@ const Payment = () => {
               Cart is empty
             </h1>
           )}
+
+          <div className="payment-body-security">
+            <div className="payment-body-security-iconText">
+              <Lock color="#000" size={32} />
+              <span>Security & Privacy</span>
+            </div>
+            <span className="payment-body-security-text">
+              Every transaction on <b>Lifters Shop</b> is secure. Any personal
+              information you give us will be handled according to our{" "}
+              <u style={{ cursor: "pointer" }}>Privacy Policy.</u>
+            </span>
+          </div>
         </div>
         <PaymentForm />
       </div>

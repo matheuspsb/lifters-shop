@@ -73,3 +73,29 @@
   flex-direction: column;
   gap: 32px;
 }
+
+.payment-body-security {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.payment-body-security-iconText {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.payment-body-security-iconText span {
+  font-size: 20px;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #000;
+}
+
+.payment-body-security-text {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #000;
+}
