@@ -2,11 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Bag } from "@phosphor-icons/react";
 import { useCart } from "../../contexts";
-import {
-  CustomButton,
-  PaymentForm,
-  ProductCard,
-} from "../../components";
+import { CustomButton, PaymentForm, ProductCard } from "../../components";
 import { CartVisibility } from "../../types";
 import "./Payment.css";
 
@@ -36,15 +32,21 @@ const Payment = () => {
 
       <div className="payment-body">
         <div className="payment-body-cart">
-          {state.cart.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              price={product.price}
-              image={product.image}
-            />
-          ))}
+          {state.cart.length > 0 ? (
+            state.cart.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+              />
+            ))
+          ) : (
+            <h1 style={{ textAlign: "center", color: "#000" }}>
+              Cart is empty
+            </h1>
+          )}
         </div>
         <PaymentForm />
       </div>

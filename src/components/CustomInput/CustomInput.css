@@ -1,6 +1,7 @@
 .input-group {
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 4px;
 }
 
@@ -39,4 +40,7 @@
 .error-message {
   color: red;
   font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
 }

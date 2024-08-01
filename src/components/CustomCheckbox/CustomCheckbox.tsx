@@ -16,13 +16,13 @@ const CustomCheckbox: React.FC<ICustomCheckboxProps> = ({
   checked,
 }) => {
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <div className="payment-body-form-terms">
         <input type="checkbox" {...register(name)} checked={checked} />
         <label>{label}</label>
       </div>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
-    </>
+    </div>
   );
 };
 
