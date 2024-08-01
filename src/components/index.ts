@@ -6,3 +6,5 @@ export { Cart as CartMenu } from "./Cart";
 export { ProductCard as ProductCard } from "./ProductCard";
 export { CustomInput } from "./CustomInput";
 export { CustomSelect } from "./CustomSelect";
+export { CustomCheckbox } from "./CustomCheckbox";
+export { PaymentForm } from "./PaymentForm";

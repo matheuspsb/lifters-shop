@@ -1,0 +1,42 @@
+.payment-body-form-select {
+  display: flex;
+  gap: 2rem;
+}
+
+.payment-body-form-terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-body-form-terms input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+.payment-body-form-terms input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.payment-body-form-terms input[type="checkbox"]:checked::before {
+  background-color: #fff;
+}
+
+.payment-body-form-terms label {
+  cursor: pointer;
+}

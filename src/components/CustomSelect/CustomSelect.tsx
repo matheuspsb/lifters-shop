@@ -3,27 +3,33 @@ import "./CustomSelect.css";
 interface ICustomSelectProps {
   label?: string;
   placeholder?: string;
-  htmlFor?: string;
+  name?: string;
   options: string[];
   errorMessage?: string;
+  register?: any;
 }
 
 const CustomSelect: React.FC<ICustomSelectProps> = ({
   label,
   placeholder,
   errorMessage,
-  htmlFor,
+  name,
   options,
+  register,
 }) => {
-
   return (
     <div className="select-group">
-      <label htmlFor={htmlFor}>{label}</label>
+      <label style={errorMessage ? { color: "red" } : {}}>{label}</label>
       <div className="input-wrapper">
-        <select id={htmlFor} className={`input-field ${errorMessage ? "error" : ""}`}>
-          <option value="" disabled>{placeholder}</option>
+        <select
+          {...register(name)}
+          className={`input-field ${errorMessage ? "error" : ""}`}
+        >
+          <option value="">{placeholder}</option>
           {options.map((option, index) => (
-            <option key={index} value={option}>{option}</option>
+            <option key={index} value={option}>
+              {option}
+            </option>
           ))}
         </select>
       </div>

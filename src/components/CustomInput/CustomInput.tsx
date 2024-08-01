@@ -1,67 +1,46 @@
-import { useEffect, useState } from "react";
-import { useError } from "../../contexts/ErrorContext";
 import "./CustomInput.css";
 
 interface ICustomInputProps {
   type?: string;
-  label?: string;
-  placeholder?: string;
-  htmlFor: string;
+  value?: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  register: any;
   icon?: string;
   errorMessage?: string;
   maxLength?: number;
-  validate?: (value: string) => string | undefined;
-  format?: (value: string) => string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CustomInput: React.FC<ICustomInputProps> = ({
   type = "text",
+  name,
+  value,
   label,
   placeholder,
   icon,
-  htmlFor,
+  register,
+  errorMessage,
   maxLength,
-  validate,
-  format,
+  onChange
 }) => {
-  const { errors, setErrors } = useError();
-  const [value, setValue] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
-
-  useEffect(() => {
-    if (validate && isTouched) {
-      const error = validate(value);
-      setErrors((prevErrors) => ({ ...prevErrors, [htmlFor!]: error }));
-    }
-  }, [value, validate, isTouched, htmlFor, setErrors]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue = e.target.value;
-    if (format) {
-      newValue = format(newValue);
-    }
-    setValue(newValue);
-    if (!isTouched) setIsTouched(true);
-  };
-
   return (
     <div className="input-group">
-      <label htmlFor={htmlFor}>{label}</label>
+      <label style={errorMessage ? { color: "red" } : {}}>{label}</label>
       <div className="input-wrapper">
         <input
-          id={htmlFor}
           type={type}
-          className={`input-field ${errors[htmlFor!] ? "error" : ""}`}
+          className={`input-field ${errorMessage ? "error" : ""}`}
           placeholder={placeholder}
+          onChange={onChange}
           value={value}
-          onChange={handleChange}
           maxLength={maxLength}
+          {...register(name)}
         />
         {icon && <img src={icon} alt="elo logo" className="input-logo" />}
       </div>
-      {errors[htmlFor] && isTouched && (
-        <div className="error-message">{errors[htmlFor]}</div>
-      )}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
     </div>
   );
 };
