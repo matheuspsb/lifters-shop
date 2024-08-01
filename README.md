@@ -58,3 +58,6 @@ yarn run dev
 
 - ### Uso do useContext:
   O useContext foi utilizado para compartilhar estados e funções globais entre componentes sem a necessidade de passar props manualmente por vários níveis da árvore de componentes. Isso simplifica a estrutura do código e melhora a organização e manutenção da aplicação.
+
+- ### Utilização do React Hook Form com Zod:
+  Escolhi utilizar React Hook Form com Zod para o gerenciamento de formulários e validação de dados devido à sua eficiência e simplicidade. O React Hook Form oferece uma API intuitiva e de alto desempenho para lidar com formulários em React, minimizando re-renderizações desnecessárias e melhorando a performance geral da aplicação. Além disso, a integração com Zod permite a definição de esquemas de validação de forma declarativa e centralizada, garantindo que os dados do formulário sejam validados de acordo com regras específicas antes de serem submetidos.
