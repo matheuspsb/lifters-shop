@@ -1,5 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 import {
   paymentFormSchema,
   PaymentFormSchemaType,
@@ -23,10 +24,13 @@ const PaymentForm = () => {
     resolver: zodResolver(paymentFormSchema),
   });
 
-  const { getTotalPrice } = useCart();
+  const navigate = useNavigate();
+  const { state, getTotalPrice } = useCart();
 
-  function handlePaymentForm(data: PaymentFormSchemaType) {
-    console.log(data);
+  function handlePaymentForm() {
+    if(state.cart.length > 0) {
+      navigate("/success")
+    }
   }
 
   return (
