@@ -1,8 +1,8 @@
+import { Bag, Lock } from "@phosphor-icons/react";
 import { useEffect } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { Bag, Lock } from "@phosphor-icons/react";
-import { useCart } from "../../contexts";
 import { CustomButton, PaymentForm, ProductCard } from "../../components";
+import { useCart } from "../../contexts";
 import { CartVisibility } from "../../types";
 import "./Payment.css";
 
